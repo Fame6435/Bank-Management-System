@@ -1,0 +1,36 @@
+package BankManagementSystem;
+
+import java.util.Scanner;
+
+import java.util.ArrayList;
+
+public class CreateAccount {
+	
+	public CreateAccount(Scanner scanner, int lastaccid, ArrayList<Account> accounts ) {
+		
+		System.out.println("Enter your first name:");
+		String firstName = scanner.next();
+		System.out.println("Enter your last name:");
+		String lastName = scanner.next();
+		System.out.println("Enter your balance:");
+		double balance = scanner.nextDouble();
+		System.out.println("Enter your passcode(digits only):");
+		int passcode = scanner.nextInt();
+		System.out.println("Confirm passcode");
+		int passcodec = scanner.nextInt();
+		
+		if(passcode != passcodec) {
+			
+			System.out.println("Not matching");
+			return;
+			//if initial passcode doesn't match the confirming passcode
+		}
+		int id = 1000000 + lastaccid;
+		lastaccid = lastaccid + 1;
+		Account acc = new Account(firstName, lastName, id, balance, passcode);
+		accounts.add(acc);
+		System.out.println("Your account id: " + id);
+		new Menu(scanner, acc);
+		
+	}
+}
